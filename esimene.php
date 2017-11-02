@@ -1,4 +1,21 @@
 <?php
+	//et pääseks ligi sessioonile ja funktsioonidele
+	require("functions.php");
+	
+	//kui pole sisseloginud, liigume login lehele
+	if(!isset($_SESSION["userId"])){
+		header("Location: login.php");
+		exit();
+	}
+	
+	//kui on sisseloginud, siis pealehele
+	if(isset($_GET["logout"})){
+		session_destroy();
+		header("Location: esimene.php");
+		exit();
+	}
+	
+	
 	//muutujad
 	$myName = "Oleksii";
 	$myFamiliyName = "Inno";
@@ -27,6 +44,13 @@
 <body>
     <h1><?php echo $myName ." " .$myFamiliyName; ?>, veebiprogrammeerimine</h1>
     <p>See veebileht on loodud õppetöö raames ning ei sisalda mingisugust tõsiseltvõetavat sisu!</p>
+	<p><a href="?logout01">Logi välja!</a></p>
+
+	
+	<p>Meie õpime <a href="http://www.tlu.ee">Tallinna ülikoolis</a>.</p>
+	<p>Minu esimene php leht on <a href="../esimene.php">siin</a>.</p>
+	<p>Minu sõbra Meelise leht on <a href="../../../../~lutsmeel/Veebiprogrammeerimine">siin</a></p>
+	<p>Pilte näeb <a href="foto.php">siin</a>.</p>
     <?php
         echo "Algas PHP õppimine.";
         echo "<p>Täna on ";
